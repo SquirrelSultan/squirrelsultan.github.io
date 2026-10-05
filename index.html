@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will Duenkel | Engineering Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="nav-logo">WD</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#resume">Resume</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="hero">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <span class="hero-subtitle">Junior ECE @ Vanderbilt University</span>
+                <h1>Hi, I'm Will Duenkel.</h1>
+                <p style="font-size: 1.3rem; color: var(--text-primary); margin-top: 1rem;">
+                    I build high-reliability hardware for space and extreme environments. Currently focused on aerospace electronics, radiation effects, and power systems.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#experience" class="btn btn-primary">View My Work</a>
+                    <a href="#resume" class="btn btn-secondary">Download Resume</a>
+                </div>
+            </div>
+            <div class="hero-image-container">
+                <img src="profile_pic.JPG" alt="Will Duenkel">
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- ABOUT ME SECTION -->
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>I first realized my interest in electronics by playing Microsoft Flight Simulator (MFS) in high school. The funny part about MFS is how true to life it is: to fly an Airbus A320neo (my favorite plane), you have to spend 90 minutes calibrating the flight computer hardware before you even think about taxiing out to the runway. Eventually, I realized I liked setting up the avionics more than actually flying! That realization kicked off a chain of events that led me to Vanderbilt University for Electrical and Computer Engineering, and eventually joining the Rocket Team and the Radiation Effects Institute.</p>
+                    <p>Outside of academics, I play bassoon in the Vanderbilt Commodore Orchestra, hike, climb, and enjoy watching Veritasium videos about abstract math and physics. I also love playing historical strategy games like Sid Meier's Civilization VI and Crusader Kings III (although my friends joke that they are more like Excel spreadsheets disguised as video games).</p>
+                </div>
+                <div class="about-images">
+                    <img src="picture_of_me_with_bassoon_vertical.jpg" alt="Will with Bassoon">
+                    <img src="nice_nature_shot.jpeg" alt="Hiking">
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE SECTION -->
+        <section id="experience">
+            <h2>Experience</h2>
+
+            <!-- ISDE -->
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div>
+                        <h3>Institute for Space & Defense Electronics (ISDE)</h3>
+                        <div class="role-title">Radiation Effects Intern</div>
+                    </div>
+                    <div class="date-location">Nashville, TN | Summer 2026</div>
+                </div>
+                
+                <p>During my summer at the Institute for Space & Defense Electronics (ISDE), I was tasked with engineering a high-voltage evaluation platform to characterize the circuit-level effect of radiation degradation in Silicon Carbide (SiC) power devices. I began by modeling DC-DC buck converters in LTSpice using SiC device SPICE models from Rohm and Wolfspeed, tuning RLC parameters and evaluating topological variations to inform a physical hardware design. Additionally, I built an LTSpice model to simulate general radiation damage by evaluating circuit performance shifts caused by varying threshold voltage (V<sub>t</sub>) and other basic parameters.</p>
+                
+                <p>However, transitioning from software simulation to physical hardware presented intense debugging challenges. I encountered continuous hardware faults and impossible gate voltages. To isolate the root cause, I systematically broke the system down, pivoting from full converter operation to double pulse testing on individual MOSFETs. This diagnostic approach allowed me to discover a subtle gate-driver grounding mismatch between 3-terminal and 4-terminal device packages. After correcting the grounding, I successfully achieved a working Low-Side double pulse test, with experimental V<sub>DS</sub> and I<sub>D</sub> waveforms perfectly matching my theoretical models. I also designed a PCB accessory board to switch between different 3-terminal device pinouts to improve future project workflows.</p>
+
+                <p>Finally, when attempting full buck converter operation, I ran into a clock signal ringing caused by parasitic inductance, which propagated to the high-side gate and triggered the driver's protective fault state. I concluded my internship by documenting these high-frequency issues and delivering a corrective hardware roadmap as my primary deliverable. This roadmap outlined circuit layout improvements (such as physical ground separation and connection optimization strategies) to mitigate interference and guide the next iteration of the lab's testing platform.</p>
+                
+                <div class="media-grid-3">
+                    <div class="media-container isde-media">
+                        <img src="DPT_topology.png" alt="DPT Topology Schematic">
+                    </div>
+                    <div class="media-container isde-media">
+                        <img src="DPT_example.png" alt="DPT Skeleton Waveform">
+                    </div>
+                    <div class="media-container isde-media">
+                        <img src="DPT_result.png" alt="Measured DPT Waveform">
+                    </div>
+                </div>
+                <div class="media-caption">
+                    From left to right: The double pulse test circuit topology, the theoretical skeleton waveform of a DPT, and the actual measured V<sub>DS</sub> and I<sub>D</sub> waveforms confirming successful hardware operation.
+                </div>
+            </div>
+
+            <!-- BASIS -->
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div>
+                        <h3>Basis</h3>
+                        <div class="role-title">Electrical Engineering Intern</div>
+                    </div>
+                    <div class="date-location">Christchurch, NZ | Fall 2026 - Present</div>
+                </div>
+                
+                <p>While studying abroad in New Zealand, I interned at <a href="https://www.wearebasis.com/" target="_blank">Basis</a>, a smart home technology startup. I was tasked with prototyping a real-time energy monitoring system for their smart circuit breaker products. The core engineering challenge was Non-Intrusive Load Monitoring (NILM): taking aggregated household electrical data and disaggregating it to identify the power consumption of individual appliances. This system would therefore allow appliance-level tracking of power usage.</p>
+                
+                <p>To solve this, I trained a TransUNet-based deep learning model capable of isolating complex appliance power signatures from noisy household datasets. I established a robust data processing pipeline using open-source NILM datasets and optimized the model's architecture. My final model achieved a 92% turn-on event prediction accuracy, outperforming current state-of-the-art NILM research literature. This algorithm established the foundational prototype for eventual firmware integration into the next generation of Basis' smart circuit breakers.</p>
+                
+                <div class="media-grid-2">
+                    <div class="media-container basis-zoom">
+                        <img src="basis_graph_wash_mach.png" alt="Model Performance - Washing Machine">
+                    </div>
+                    <div class="media-container basis-zoom">
+                        <img src="basis_graph_microwave.png" alt="Model Performance - Microwave">
+                    </div>
+                </div>
+                <div class="media-caption" style="margin-top: 1rem;">
+                    <strong>Model Performance (Washing Machine & Microwave):</strong> The dotted blue line represents the raw, noisy aggregate household data fed into the model. The black line is the true ground-truth power draw of the specific appliance, while the red line is the model's prediction. As shown, the TransUNet model successfully ignores the background noise and highly accurately tracks the true power signature of the individual appliances.
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION -->
+        <section id="projects">
+            <h2>Aerospace Projects</h2>
+
+            <!-- VADL -->
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div>
+                        <h3>Rocket Team (Vanderbilt Aerospace Design Laboratory)</h3>
+                        <div class="role-title">Hardware, Avionics, & Outreach</div>
+                    </div>
+                    <div class="date-location">Nashville, TN | 2025 - Present</div>
+                </div>
+                
+                <p>As a member of the Hardware and Avionics sub-teams for the Vanderbilt Aerospace Design Laboratory (VADL), I compete in the NASA Student Launch Competition as part of an interdisciplinary engineering team. I was heavily involved in the integration, testing, and debugging of both hardware and software across our avionics and mission-critical systems.</p>
+                
+                <p>By rigorously analyzing our payload requirements, I architected a sensor replacement that cut our avionics budget by $1,300 while simultaneously improving flight data accuracy. Furthermore, when our Parachute Detachment System encountered a critical hardware latch fault, I diagnosed the issue and helped implement a moving average filter in software to smooth noisy altimeter data. These mitigations ensured 100% parachute deployment reliability across all our field tests.</p>
+                
+                <p>I also co-authored highly detailed Preliminary, Critical, and Flight Readiness Review (PDR/CDR/FRR) technical reports in LaTeX for NASA engineer judges, and co-led numerous STEM outreach events to bring aerospace engineering concepts to local K-12 students.</p>
+
+                <!-- VADL Media Grid -->
+                <div style="margin-top: 2rem;">
+                    <div class="media-container" style="margin-bottom: 1.5rem;">
+                        <video autoplay loop muted playsinline style="width: 100%; border-radius: 8px;">
+                            <source src="VADL_edit.MOV" type="video/quicktime">
+                            <source src="VADL_edit.MOV" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="media-grid-3" style="margin-top: 0;">
+                        <div class="media-container">
+                            <img src="VADL_rocket_launching.jpg" alt="VADL Rocket Launching" style="height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="media-container">
+                            <img src="rocket_being_set_up.jpeg" alt="Rocket Being Set Up" style="height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="media-container">
+                            <img src="rocket_in_lab.jpeg" alt="Rocket in Lab" style="height: 100%; object-fit: cover;">
+                        </div>
+                    </div>
+                </div>
+                <div class="media-caption" style="margin-top: 1rem;">
+                    VADL payload testing, lab integration, and full field launches.
+                </div>
+            </div>
+
+            <!-- NZUSC (WIP) -->
+            <div class="experience-card wip-card" style="margin-top: 2rem;">
+                <h3>New Zealand Undergraduate Space Challenge</h3>
+                <div class="role-title" style="margin-bottom: 1rem;">Photonic and Electronic Architecture Lead</div>
+                <p>Currently leading the design for a NASA Artemis-inspired optical communications payload for a 1/2U CubeSat targeting Low Earth Orbit via Rocket Lab.</p>
+                <span class="date-location">Status: Requirements Definition Phase (Work In Progress)</span>
+            </div>
+        </section>
+
+        <!-- RESEARCH SECTION -->
+        <section id="research">
+            <h2>Research & Lab Work</h2>
+            
+            <div class="experience-card wip-card">
+                <h3>Cliffel Laboratories</h3>
+                <div class="role-title" style="margin-bottom: 1rem;">Solid-State Solar Cells Research Assistant</div>
+                <p><em>Section details coming soon.</em> (Cleanroom Fabrication, Osmium Synthesis)</p>
+                <div style="margin-top: 2rem; display: flex; justify-content: center; gap: 2rem;">
+                    <img src="me_in_clean_suit.jpeg" style="height: 250px; border-radius: 8px;">
+                    <img src="solar_cell_devices.jpeg" style="height: 250px; border-radius: 8px;">
+                </div>
+            </div>
+
+            <div class="experience-card wip-card">
+                <h3>SCALE Microelectronics Program</h3>
+                <div class="role-title" style="margin-bottom: 1rem;">Radiation Hardening Vertical</div>
+                <p><em>Section details coming soon.</em> (KiCad PCB Design, Xilinx Vivado, Digital IC Design)</p>
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Hardware & Lab</h4>
+                    <ul class="skill-list">
+                        <li>Oscilloscopes & PA (B1505)</li>
+                        <li>Double-Pulse Testing (DPT)</li>
+                        <li>Radiation Effects & Characterization</li>
+                        <li>Soldering & PCB Assembly</li>
+                        <li>Cleanroom Fabrication</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>EDA & CAD</h4>
+                    <ul class="skill-list">
+                        <li>LTSpice & SPICE Modeling</li>
+                        <li>KiCad PCB Design</li>
+                        <li>Xilinx Vivado (FPGA)</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Software & Firmware</h4>
+                    <ul class="skill-list">
+                        <li>Python (Pandas, PyTorch)</li>
+                        <li>Bash & Linux CLI</li>
+                        <li>Verilog</li>
+                        <li>LaTeX</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESUME SECTION -->
+        <section id="resume">
+            <h2>Resume & Contact</h2>
+            <div class="experience-card" style="text-align: center;">
+                <p>Feel free to download my resume or reach out to me directly.</p>
+                <div style="display: flex; justify-content: center; margin-top: 2rem;">
+                    <!-- Linked to the new renamed file -->
+                    <a href="Will_Duenkel_Resume.pdf" target="_blank" class="btn btn-primary" style="padding: 1rem 2rem; font-size: 1.1rem;">Download Resume</a>
+                </div>
+                <p style="margin-top: 2.5rem; font-family: var(--font-mono); font-size: 1.2rem;">
+                    Email: <a href="mailto:will.f.duenkel@vanderbilt.edu" style="color: var(--text-primary);">will.f.duenkel@vanderbilt.edu</a><br>
+                    GitHub: <a href="https://github.com/squirrelsultan" style="color: var(--text-primary);">github.com/squirrelsultan</a>
+                </p>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Will Duenkel</p>
+    </footer>
+
+</body>
+</html>
